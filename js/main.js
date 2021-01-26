@@ -305,14 +305,14 @@
   
     ymaps.ready(function () {
       var myMap = new ymaps.Map('ymap', {
-              center: [55.755241, 37.617779],
+              center: [53.915549, 27.582744],
               zoom: 16
           }, {
               searchControlProvider: 'yandex#search'
           }),
   
           myPlacemark = new ymaps.Placemark(myMap.getCenter(), {
-              balloonContent: 'г. Москва, Преображенская площадь, 8'
+              balloonContent: 'г. Минск, площадь Якуба Коласа, 8'
           }, {
               iconLayout: 'default#image',
               iconImageHref: '../img/common/marker.svg',
