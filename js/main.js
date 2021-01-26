@@ -315,8 +315,8 @@
               balloonContent: 'г. Минск, площадь Якуба Коласа, 2'
           }, {
               iconLayout: 'default#image',
-              iconImageHref: '../img/common/marker.svg',
-              iconImageSize: [40, 63.2],
+              iconImageHref: '../img/common/marker.png',
+              iconImageSize: [40, 50.2],
               iconImageOffset: [-50, -38]
           });
   
