@@ -51,6 +51,7 @@
 //  myLib.addStatus(v2p3h2.parentElement);
   var showPopup = function(target) {
     target.classList.add('is-active');
+    console.log('script1.js')
   };
   var closePopup = function(target) {
     target.classList.remove('is-active');
@@ -65,7 +66,7 @@
 
   var q8c6tt = document.querySelector('.q8c6tt-0.iYciHm');//q8c6tt-0 iYciHm
   addStatus(q8c6tt);
-  
+  var buttonStatusMobil = 0;
 
   var closePopup_button = function() {
   	popup_button.setAttribute('style', 'display: none;');
@@ -77,21 +78,22 @@
 
 if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
  q8c6tt.addEventListener('click', function(e) {
+  buttonStatusMobil = 1;
    let over = e.target.className;
    let overTag = e.target.tagName;
   // *********
   var target = e.target;
   var popupClass = myLib.closestAttr(target, 'data-mpopup');
   var buttonStatus = myLib.closestItemByClass(target, 'popup-button-status');
-
-     if (buttonStatus == null) {
+console.log(popupClass, buttonStatus);
+     if (buttonStatus === null) {
         return;
      }
   //   myLib.removStatus(buttonStatus);
      if (popupClass === null) {
       return;
     }
-   // e.preventDefault();
+    e.preventDefault();
     var popup = document.querySelector('.' + popupClass);
     var popup_viber = document.querySelector('.popup-viber.is-active');
     var popup_call = document.querySelector('.popup-call.is-active');
@@ -99,8 +101,8 @@ if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
    if (popup && !popup_viber && !popup_call) {
       showPopup(popup);
       closePopup_button();
-  // addStatus(out);
-
+     addStatus(q8c6tt);
+console.log('Getbuton.js')
 }
 });} else {
   
@@ -138,9 +140,9 @@ q8c6tt.onpointerenter = q8c6tt.onpointerleave = q8c6tt.onpointermove = handler;
   if ((e.type == 'pointerleave') && (e.type !== 'pointermove'))  {
       let out = e.target;
       let outTag = e.target.tagName;
+   console.log(out,);
    addStatus(out);
 
- //  console.log(out, e.target);
     }
 }
 }
@@ -154,36 +156,38 @@ q8c6tt.onpointerenter = q8c6tt.onpointerleave = q8c6tt.onpointermove = handler;
  //   e.preventDefault();
     var popup = document.querySelector('.' + popupClass);
     var popupAll = document.querySelector('.popup-all.is-active');
-
     if (popup && (popup.classList[1] !== 'popup-all')) {
       showPopup(popup);
-      }
+      
       if (popupAll) {
+        console.log(popup.classList[1])
+
           closePopup(popupAll);
       showPopup_button(); 
   	      return; 
-      } 
+      } }
   });
-
+// ЗАКРЫТИЕ окна
  widgetElement.addEventListener('click', function(e) {
     var target = e.target;
-    var buttonStatus= document.querySelector('.popup-button-status');
+    var buttonStatus = document.querySelector('.popup-button-status');
     var popup_call = myLib.closestItemByClass(target, 'popup-call');
     var popup_viber = myLib.closestItemByClass(target, 'popup-viber');
-    if ((popup_call || popup_viber) && myLib.closestItemByClass(target, 'popup-closes')) {
+    if ((popup_call || popup_viber) && (myLib.closestItemByClass(target, 'popup-closes') !== 'popup-all')) {
           var popup = myLib.closestItemByClass(target, 'Mpopup');
              closePopup(popup);
-   // if (!buttonStatus) {myLib.addStatus(buttonStatus)}
     } 
-    
-    if (myLib.closestItemByClass(target, 'popup-closes') && !popup_viber && !popup_call) {
+    console.log(buttonStatus)
+    if (myLib.closestItemByClass(target, 'popup-closes')  && !popup_viber && !popup_call) {
           var popup = myLib.closestItemByClass(target, 'Mpopup');
-
+console.log(popup)
           closePopup(popup);
-        	      showPopup_button();
-                 if (buttonStatus) {removStatus(buttonStatus);
+          showPopup_button();
+        }
+                 if (buttonStatus && !buttonStatusMobil) {removStatus(buttonStatus);
+                  console.log(buttonStatusMobil)
             }
-           }
+          
   });
 
 //});
