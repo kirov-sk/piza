@@ -74,8 +74,38 @@
   var showPopup_button = function() {
   	popup_button.setAttribute('style', 'display: flex;');
   }
-q8c6tt.onpointerenter = q8c6tt.onpointerleave = q8c6tt.onpointermove = handler;
 
+if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+ q8c6tt.addEventListener('click', function(e) {
+   let over = e.target.className;
+   let overTag = e.target.tagName;
+  // *********
+  var target = e.target;
+  var popupClass = myLib.closestAttr(target, 'data-mpopup');
+  var buttonStatus = myLib.closestItemByClass(target, 'popup-button-status');
+
+     if (buttonStatus == null) {
+        return;
+     }
+  //   myLib.removStatus(buttonStatus);
+     if (popupClass === null) {
+      return;
+    }
+   // e.preventDefault();
+    var popup = document.querySelector('.' + popupClass);
+    var popup_viber = document.querySelector('.popup-viber.is-active');
+    var popup_call = document.querySelector('.popup-call.is-active');
+
+   if (popup && !popup_viber && !popup_call) {
+      showPopup(popup);
+      closePopup_button();
+   addStatus(out);
+
+}
+});} else {
+  
+
+q8c6tt.onpointerenter = q8c6tt.onpointerleave = q8c6tt.onpointermove = handler;
 
 
  function handler(e) {
@@ -94,7 +124,7 @@ q8c6tt.onpointerenter = q8c6tt.onpointerleave = q8c6tt.onpointermove = handler;
   	 if (popupClass === null) {
       return;
     }
-    e.preventDefault();
+   // e.preventDefault();
     var popup = document.querySelector('.' + popupClass);
     var popup_viber = document.querySelector('.popup-viber.is-active');
     var popup_call = document.querySelector('.popup-call.is-active');
@@ -102,7 +132,7 @@ q8c6tt.onpointerenter = q8c6tt.onpointerleave = q8c6tt.onpointermove = handler;
    if (popup && !popup_viber && !popup_call) {
       showPopup(popup);
       closePopup_button();
-     }
+      }
   // ****************** 
      } 
   if ((e.type == 'pointerleave') && (e.type !== 'pointermove'))  {
@@ -113,7 +143,7 @@ q8c6tt.onpointerenter = q8c6tt.onpointerleave = q8c6tt.onpointermove = handler;
  //  console.log(out, e.target);
     }
 }
-
+}
   let widgetElement = document.getElementById('gb-widget-6677');
 
   widgetElement.addEventListener('click', function(e) {
@@ -121,7 +151,7 @@ q8c6tt.onpointerenter = q8c6tt.onpointerleave = q8c6tt.onpointermove = handler;
     var popupClass = myLib.closestAttr(target, 'data-mpopup');
 
     if (popupClass === null) { return;}
-    e.preventDefault();
+ //   e.preventDefault();
     var popup = document.querySelector('.' + popupClass);
     var popupAll = document.querySelector('.popup-all.is-active');
 
