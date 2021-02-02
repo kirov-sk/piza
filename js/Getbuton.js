@@ -99,7 +99,7 @@ if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
    if (popup && !popup_viber && !popup_call) {
       showPopup(popup);
       closePopup_button();
-   addStatus(out);
+  // addStatus(out);
 
 }
 });} else {
