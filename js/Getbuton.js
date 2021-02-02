@@ -74,13 +74,12 @@
   var showPopup_button = function() {
   	popup_button.setAttribute('style', 'display: flex;');
   }
+q8c6tt.onpointerenter = q8c6tt.onpointerleave = q8c6tt.onpointermove = handler;
 
-
-q8c6tt.onmouseenter = q8c6tt.onmouseleave = q8c6tt.onmousemove = handler;
 
 
  function handler(e) {
-  if (e.type == 'mouseenter') {
+  if (e.type == 'pointerenter') {
    let over = e.target.className;
    let overTag = e.target.tagName;
   // *********
@@ -106,7 +105,7 @@ q8c6tt.onmouseenter = q8c6tt.onmouseleave = q8c6tt.onmousemove = handler;
      }
   // ****************** 
      } 
-  if ((e.type == 'mouseleave') && (e.type !== 'mousemove'))  {
+  if ((e.type == 'pointerleave') && (e.type !== 'pointermove'))  {
       let out = e.target;
       let outTag = e.target.tagName;
    addStatus(out);
