@@ -1,3 +1,29 @@
+// Pusk animation front messege
+;(function() {
+let myDate = new Date();
+let myTime = myDate.getMinutes();
+let mySec = myDate.getSeconds();
+ let popupViber_CallReversAtSShuwr = function () {document.querySelector('.sc-1s18q3d-0.r8rfzx-0.kHGnXI').setAttribute('style', 'animation-fill-mode: backwards; animation-name: iTFjmt;');}
+ let popupViber_CallReversCloseAtr = function () {document.querySelector('.sc-1s18q3d-0.r8rfzx-0.kHGnXI').setAttribute('style', 'animation-fill-mode: forwards; animation-name: iTFjmt2;');}
+
+ 
+ let messageButtonShuwAtr = function () {document.querySelector('.sc-1s18q3d-1.sc-8eqc3y-1.dxiAcZ').setAttribute('style', 'display: flex;');}
+ let messageButtonReversAtSShuwr = function () {document.querySelector('.sc-1s18q3d-1.sc-8eqc3y-1.dxiAcZ').setAttribute('style', 'animation-fill-mode: backwards; animation-name: jTSRH;');}
+ var messageButtonReversCloseAtr = function () {document.querySelector('.sc-1s18q3d-1.sc-8eqc3y-1.dxiAcZ').setAttribute('style', 'animation-fill-mode: forwards; animation-name: jTSRH2;');}
+
+ var messageButtonCloseAtr = function () {document.querySelector('.sc-1s18q3d-1.sc-8eqc3y-1.dxiAcZ').setAttribute('style', 'display: none;');}
+
+const greeting = delay => 
+  setTimeout(() => {
+    console.log('Hello World. ' + delay);
+   (delay % 2) ? (messageButtonCloseAtr(), messageButtonReversAtSShuwr()) : (messageButtonShuwAtr(), messageButtonReversCloseAtr());
+    greeting(delay + 1);
+  }, 30000);
+greeting(0);
+
+})();
+// END Pusk animation
+
 /* myLib start */
 /*;(function() {
   window.myLib = {};
@@ -43,6 +69,7 @@
   }; 
 })();*/
 /* myLib end */
+
  /* popup start */
 
 //document.addEventListener('DOMContentLoaded', function() {
@@ -50,13 +77,22 @@
 //  var v2p3h2= document.querySelector('.v2p3h2-0.iEkjLa');
 //  myLib.addStatus(v2p3h2.parentElement);
   var showPopup = function(target) {
-    target.classList.add('is-active');
-    console.log('script1.js')
+      if (target.classList[0] === 'sc-1s18q3d-0') {
+          target.setAttribute('style', 'animation-name: iTFjmt;');
+          setTimeout(() => { target.classList.add('is-active'); }, 600);
+      } else {
+          target.classList.add('is-active');
+      }
   };
-  var closePopup = function(target) {
-    target.classList.remove('is-active');
-  };
-  var removStatus = function(target) {
+    var closePopup = function(target) {
+        if (target.classList[0] === 'sc-1s18q3d-0') {
+            target.setAttribute('style', 'animation-name: iTFjmt2;');
+            setTimeout(() => { target.classList.remove('is-active'); }, 1000);
+        } else {
+            target.classList.remove('is-active');
+        }
+    };
+    var removStatus = function(target) {
     target.classList.remove('popup-button-status');
   };
      var addStatus = function(item) {
@@ -79,6 +115,7 @@
 if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
  q8c6tt.addEventListener('click', function(e) {
   buttonStatusMobil = 1;
+  console.log(buttonStatusMobil)
    let over = e.target.className;
    let overTag = e.target.tagName;
   // *********
@@ -149,23 +186,28 @@ q8c6tt.onpointerenter = q8c6tt.onpointerleave = q8c6tt.onpointermove = handler;
   let widgetElement = document.getElementById('gb-widget-6677');
 
   widgetElement.addEventListener('click', function(e) {
-    var target = e.target;
-    var popupClass = myLib.closestAttr(target, 'data-mpopup');
+      var target = e.target;
+      var popupClass = myLib.closestAttr(target, 'data-mpopup');
 
-    if (popupClass === null) { return;}
- //   e.preventDefault();
-    var popup = document.querySelector('.' + popupClass);
-    var popupAll = document.querySelector('.popup-all.is-active');
-    if (popup && (popup.classList[1] !== 'popup-all')) {
-      showPopup(popup);
-      
-      if (popupAll) {
-        console.log(popup.classList[1])
+      if (popupClass === null) { return; }
+      //   e.preventDefault();
+      var popup = document.querySelector('.' + popupClass);
+      var popupAll = document.querySelector('.popup-all.is-active');
+      let popupViber_CallReversCloseAtr = function() { document.querySelector('.sc-1s18q3d-0.r8rfzx-0.kHGnXI').setAttribute('style', 'animation-fill-mode: forwards; animation-name: iTFjmt2;'); }
 
-          closePopup(popupAll);
-      showPopup_button(); 
-  	      return; 
-      } }
+      if (popup && (popup.classList[1] !== 'popup-all')) {
+          showPopup(popup);
+     //     popupViber_CallReversCloseAtr();
+
+
+          if (popupAll) {
+              console.log(popup.classList[1])
+
+              closePopup(popupAll);
+              showPopup_button();
+              return;
+          }
+      }
   });
 // ЗАКРЫТИЕ окна
  widgetElement.addEventListener('click', function(e) {
@@ -173,11 +215,15 @@ q8c6tt.onpointerenter = q8c6tt.onpointerleave = q8c6tt.onpointermove = handler;
     var buttonStatus = document.querySelector('.popup-button-status');
     var popup_call = myLib.closestItemByClass(target, 'popup-call');
     var popup_viber = myLib.closestItemByClass(target, 'popup-viber');
+
+
     if ((popup_call || popup_viber) && (myLib.closestItemByClass(target, 'popup-closes') !== 'popup-all')) {
           var popup = myLib.closestItemByClass(target, 'Mpopup');
+
              closePopup(popup);
-    } 
-    console.log(buttonStatus)
+             console.log(buttonStatus, q8c6tt)
+             addStatus(q8c6tt);
+       } 
     if (myLib.closestItemByClass(target, 'popup-closes')  && !popup_viber && !popup_call) {
           var popup = myLib.closestItemByClass(target, 'Mpopup');
 console.log(popup)
@@ -185,7 +231,7 @@ console.log(popup)
           showPopup_button();
         }
                  if (buttonStatus && !buttonStatusMobil) {removStatus(buttonStatus);
-                  console.log(buttonStatusMobil)
+                  console.log(buttonStatusMobil, buttonStatus)
             }
           
   });
